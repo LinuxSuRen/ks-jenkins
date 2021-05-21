@@ -1,0 +1,12 @@
+image: ghcr.io/linuxsuren/ks-jenkins-gitpod:test-cache
+
+tasks:
+  - init: |
+      git config --global user.name $GIT_AUTHOR_NAME
+      git config --global user.email $GIT_COMMITTER_EMAIL
+      echo Yes | gh repo fork
+      jcli cwp --install-artifacts --config-path formula.yaml || true
+
+vscode:
+  extensions:
+    - eamodio.gitlens
